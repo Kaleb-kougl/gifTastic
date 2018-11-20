@@ -1,30 +1,32 @@
- // Event listener for our cat-button
- $(".btn").on("click", function() {
-
   // Storing our giphy API URL for a random cat image
   var queryURL = "https://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=cats";
 
-  // Perfoming an AJAX GET request to our queryURL
-  $.ajax({
-    url: queryURL,
-    method: "GET"
-  })
+$(".btn").on("click", function() {
+    // Grabbing and storing the data-animal property value from the button
+    let food = $(this).attr("data-food");
+    console.log(food);
 
-  // After the data from the AJAX request comes back
+    // Constructing a queryURL using the animal name
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
+      food + "&api_key=dc6zaTOxFJmzC&limit=10";
+
+    // Performing an AJAX request with the queryURL
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    })
+      // After data comes back from the request
     .then(function(response) {
-      console.log(response);
-
-    // Saving the image_original_url property
-      var imageUrl = response.data.image_original_url;
-
-      // Creating and storing an image tag
-      var catImage = $("<img>");
-
-      // Setting the catImage src attribute to imageUrl
-      catImage.attr("src", imageUrl);
-      catImage.attr("alt", "cat image");
-
-      // Prepending the catImage to the images div
-      $("#images").prepend(catImage);
+      $("#images").empty();
+      var results = response.data;
+      for (var i = 0; i < results.length; i++) {
+        var foodDiv = $("<div>");
+        var p = $("<p>").text("Rating: " + results[i].rating);
+        var animalImage = $("<img>");
+        animalImage.attr("src", results[i].images.fixed_height.url);
+        foodDiv.append(p);
+        foodDiv.append(animalImage);
+        $("#images").prepend(foodDiv);
+      }
     });
-});
+  });
