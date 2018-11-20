@@ -1,12 +1,15 @@
 let topics =['beef', 'chicken', 'ramen'];
 
-  for (let i = 0; i < topics.length; i++) {
+function makeButtons(buttons=topics) {
+  $('#button-div').empty();
+  for (let i = 0; i < buttons.length; i++) {
     console.log('here')
-    let newBtn = $(`<button class="btn" data-food=${topics[i]}>`);
-    newBtn.text(topics[i]);
+    let newBtn = $(`<button class="btn" data-food=${buttons[i]}>`);
+    newBtn.text(buttons[i]);
     $('#button-div').append(newBtn);
+  }
 }
-
+makeButtons();
 $(document).on("click", ".btn", function() {
   // Grabbing and storing the data-animal property value from the button
   let food = $(this).attr("data-food");
@@ -26,7 +29,6 @@ $(document).on("click", ".btn", function() {
     $("#images").empty();
     let results = response.data;
     for (let i = 0; i < results.length; i++) {
-      console.log(results[i].images);
       let foodDiv = $("<div>");
       let p = $("<p>").text("Rating: " + results[i].rating);
       let animalImage = $("<img>");
@@ -49,7 +51,9 @@ $('#submission-form').on('submit', function(event) {
 
   let newBtn = $(`<button class="btn" data-food=${food}>`);
   newBtn.text(food);
-  $('#button-div').append(newBtn);
+  // $('#button-div').append(newBtn);
+  topics.push(food);
+  makeButtons(topics);
 })
 
 $(document).on("click", ".gif", function() {
