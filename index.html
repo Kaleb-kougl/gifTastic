@@ -9,11 +9,20 @@
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 </head>
 <body>
-  <button class="btn" data-food="Chicken">Chicken</button>
-  <button class="btn" data-food="Beef">Beef</button>
-  <button class="btn" data-food="Ramen">Ramen</button>
+  <div id='button-div'>
+    <button class="btn" data-food="Chicken">Chicken</button>
+    <button class="btn" data-food="Beef">Beef</button>
+    <button class="btn" data-food="Ramen">Ramen</button>
+  </div>
   <div id="images">
   </div>
+  <form id="submission-form">
+      Food:<br>
+      <input type="text" name="food" value="" id="food-text">
+      <br>
+      <input type="submit" value="Submit" id="submit-btn">
+  </form>
+  
   <script src="main.js"></script>
 </body>
 </html>
