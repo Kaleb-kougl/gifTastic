@@ -4,12 +4,14 @@ function makeButtons(buttons=topics) {
   $('#button-div').empty();
   for (let i = 0; i < buttons.length; i++) {
     console.log('here')
-    let newBtn = $(`<button class="btn" data-food=${buttons[i]}>`);
+    let newBtn = $(`<button class="btn btn-primary" data-food=${buttons[i]}>`);
     newBtn.text(buttons[i]);
     $('#button-div').append(newBtn);
   }
 }
+
 makeButtons();
+
 $(document).on("click", ".btn", function() {
   // Grabbing and storing the data-animal property value from the button
   let food = $(this).attr("data-food");

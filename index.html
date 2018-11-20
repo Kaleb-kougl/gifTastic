@@ -5,23 +5,30 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Gifs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 </head>
 <body>
-  <div id='button-div'>
-    <!-- <button class="btn" data-food="Chicken">Chicken</button> -->
-    <!-- <button class="btn" data-food="Beef">Beef</button> -->
-    <!-- <button class="btn" data-food="Ramen">Ramen</button> -->
+  <div class="row">
+    <div id='button-div' class="col-12">
+    </div>
   </div>
-  <div id="images">
+  <div class="row">
+    <div class="col-10">
+      <div id="images"></div>
+    </div>
+
+    <div class="col-2">
+      <form id="submission-form">
+        Food:<br>
+        <input type="text" name="food" value="" id="food-text">
+        <br>
+        <input type="submit" value="Submit" id="submit-btn">
+      </form>
+    </div>
+
   </div>
-  <form id="submission-form">
-      Food:<br>
-      <input type="text" name="food" value="" id="food-text">
-      <br>
-      <input type="submit" value="Submit" id="submit-btn">
-  </form>
   
   <script src="main.js"></script>
 </body>
